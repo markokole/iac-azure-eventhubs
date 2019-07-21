@@ -4,7 +4,7 @@
 ## Enter Docker container
 cd docker
 docker build . --tag=azure-image
-docker run -itd --rm --name azure --hostname azure -v C:\marko\GitHub\iac-azure:/local-git azure-image
+docker run -itd --rm --name azure --hostname azure -v C:\marko\GitHub\iac-azure-eventhubs:/local-git azure-image
 docker exec -it azure bash
 
 ### Azure authentication
@@ -21,4 +21,4 @@ Execute the following commands:
 **ARM_CLIENT_ID=$(az account show --query "{appId:id}" --output tsv)**
 **ARM_TENANT_ID=$(az account show | jq -r ".tenantId")**
 
-The environment is now ready for provisioning Azure services with Terraform. Step into `iac-azure/modules` folder and provision the Event Hubs services.
+The environment is now ready for provisioning Azure services with Terraform. Step into `iac-azure-eventhubs/modules` folder and provision the Event Hubs services.
