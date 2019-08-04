@@ -21,6 +21,8 @@ If authenticated a JSON output shows up in the Docker.
 ### Export Azure environment variables
 
 Execute the following commands:
+
+```bash
 **ARM_SUBSCRIPTION_ID=$(az account show --query "{subscriptionId:id}" --output tsv)**
 
 **ARM_CLIENT_SECRET=$(az ad sp create-for-rbac --name http://ServicePrincipalName --role="Contributor" --scopes="/subscriptions/${ARM_SUBSCRIPTION_ID}" | jq -r ".password")**
@@ -28,5 +30,6 @@ Execute the following commands:
 **ARM_CLIENT_ID=$(az account show --query "{appId:id}" --output tsv)**
 
 **ARM_TENANT_ID=$(az account show | jq -r ".tenantId")**
+```
 
 The environment is now ready for provisioning Azure services with Terraform. Step into `iac-azure-eventhubs/modules` folder and provision the Event Hubs services.
