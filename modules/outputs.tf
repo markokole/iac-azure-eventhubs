@@ -11,9 +11,19 @@ output "event_hub_namespace" {
 }
 
 output "event_hub" {
-    value = "${azurerm_eventhub.event_hub_test.name}"
+    value = ["${azurerm_eventhub.event_hub_test.*.name}"]
 }
 
 output "primary_connection_string" {
     value = "${azurerm_eventhub_namespace_authorization_rule.event_hub_test.primary_connection_string}"
 }
+
+/*
+output "storage_blob_id:" {
+    value = "${azurerm_storage_blob.blob_storage_kafka.id}"
+}
+
+output "storage_blob_url:" {
+    value = "${azurerm_storage_blob.blob_storage_kafka.url}"
+}
+*/
