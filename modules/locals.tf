@@ -16,6 +16,7 @@ locals {
     // databricks
     databricks_workspace_name   = "${local.customer}DBWS"
     databricks_managed_resource_group   = "${local.customer}DBMRG"
+    role_definition_name        = "Owner"
 
     // eventhubs
     eventhub_namespace          = "markobigdata"

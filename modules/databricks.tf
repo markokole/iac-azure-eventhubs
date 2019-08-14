@@ -6,3 +6,9 @@ resource "azurerm_databricks_workspace" "databricks_workspace" {
     location                    = "${azurerm_resource_group.resource_group.location}"
     sku                         = "standard"
 }
+resource "azurerm_role_assignment" "test" {
+  count                       = "${local.provision_databricks}"
+  scope                         = "${azurerm_databricks_workspace.databricks_workspace.id}"
+  role_definition_name          = "${local.role_definition_name}"
+  principal_id                  = "${local.principal_id}"
+}
